@@ -1,35 +1,37 @@
-GET http://localhost:3000/
-
-###
-
-PUT http://localhost:3000/ HTTP/1.1
-
-###
-
-GET http://localhost:3000/api/cursos/programacion/python?ordenar=vistas HTTP/1.1
-
-###
-
-POST http://localhost:3000/api/cursos/programacion HTTP/1.1
+POST http://localhost:3000/api/comercios
 Content-Type: application/json
 
 {
-    "id": 4,
-    "titulo" : "Aprende Node.js" ,
-    "lenguaje" : "javascript" ,
-    "vistas" : 45676,
-    "nivel" : "basico"
+    "nombre": "Nombre del comercio",
+    "cif": "CIF123",
+    "direccion": "Dirección del comercio",
+    "email": "correo@comercio.com",
+    "telefono": "123456789",
+    "idPagina": 1
 }
 
 ###
 
-PUT http://localhost:3000/api/cursos/programacion/2 HTTP/1.1
+PUT http://localhost:3000/api/comercios/CIF123
 Content-Type: application/json
 
 {
-    "id": 2,
-    "titulo": "Python intermedio con proyectos",
-    "lenguaje": "python",
-    "vistas": 123006,
-    "nivel": "intermedio"
+    "nombre": "Nuevo nombre del comercio",
+    "cif": "CIF123",
+    "direccion": "Nueva dirección del comercio",
+    "email": "nuevo_correo@comercio.com",
+    "telefono": "987654321",
+    "idPagina": 2
+}
+
+###
+DELETE http://localhost:3000/api/comercios/CIF123
+
+###
+
+PATCH http://localhost:3000/api/comercios/CIF123
+Content-Type: application/json
+
+{
+    "direccion": "Nueva dirección del comercio"
 }

@@ -1,23 +1,3 @@
-/*const { saludarEnEspanol, saludarEnIngles } = require("./saludo");
-const http = require('http');
-
-const servidor = http.createServer((req, res) => {
-    // Verificamos la ruta solicitada para determinar el idioma del saludo
-    if (req.url === '/es') {
-        res.end(saludarEnEspanol()); // Saludo en español
-    } else if (req.url === '/en') {
-        res.end(saludarEnIngles()); // Saludo en inglés
-    } else {
-        res.statusCode = 404;
-        res.end('Página no encontrada'); // Respuesta para rutas desconocidas
-    }
-});
-
-const puerto = 3000;
-servidor.listen(puerto, () => {
-    console.log(`Servidor en ejecución en el puerto ${puerto}`);
-});*/
-
 const http = require('http');
 const cursos = require('./cursos');
 
