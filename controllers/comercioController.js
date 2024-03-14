@@ -1,6 +1,6 @@
 const { matchedData } = require('express-validator');
-const handleHttpError = require("../utils/handleError");
 const Comercio = require('../models/comercio');
+const { handleHttpError } = require('../utils/handleError');
 
 // Obtener la lista de comercios
 exports.obtenerComercios = async (req, res) => {

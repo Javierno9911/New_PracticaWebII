@@ -1,6 +1,12 @@
+const { getItems, getItem, createItem } = require("../controllers/tracks")
+const { validatorCreateItem } = require("../validators/tracks")
+const customHeader = require("../middleware/customHeader")
+
+
+
 const express = require('express');
 const router = express.Router();
-const comerciosController = require('../controllers/comerciosController');
+const comerciosController = require('../controllers/comercioController');
 
 // Obtener la lista de comercios
 router.get('/', comerciosController.obtenerComercios);

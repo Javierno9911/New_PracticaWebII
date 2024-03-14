@@ -14,7 +14,7 @@ const validatorCreateItem = [
     check("nombre").exists().notEmpty(),
     check("cif").exists().notEmpty(),
     check("direccion").exists().notEmpty(),
-    check("artist").exists().notEmpty(),
+    check("email").exists().notEmpty(),
     check("telefono").exists().notEmpty(),
     check("idPagina").exists().notEmpty().isMongoId(),
     (req, res, next) => {
