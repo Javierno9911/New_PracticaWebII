@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongooseDelete = require("mongoose-delete")
 
 const comercioSchema = new mongoose.Schema({
   nombre: { type: String, required: true },
