@@ -70,6 +70,7 @@ routerProgramcion.get('/:lenguaje', (req, res) => {
     }
     res.send(JSON.stringify(data1));
 });
+
 routerProgramcion.get('/:lenguaje/:nivel', (req, res) => {
     const lenguaje = req.params.lenguaje;
     const nivel = req.params.nivel;

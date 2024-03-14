@@ -17,7 +17,7 @@ const infoCursos = {
         {
             id: 3,
             titulo: 'Pyhton intermedio',
-            lenguaje: 'javascript',
+            lenguaje: 'python',
             vistas: 16000,
             nivel: 'basico'
         }

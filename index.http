@@ -1,17 +1,35 @@
 GET http://localhost:3000/
 
-##
+###
 
-POST http://localhost:3000/cursos/programacion
+PUT http://localhost:3000/ HTTP/1.1
+
+###
+
+GET http://localhost:3000/api/cursos/programacion/python?ordenar=vistas HTTP/1.1
+
+###
+
+POST http://localhost:3000/api/cursos/programacion HTTP/1.1
 Content-Type: application/json
 
 {
-    "titulo": "Aprende Node.js"
+    "id": 4,
+    "titulo" : "Aprende Node.js" ,
+    "lenguaje" : "javascript" ,
+    "vistas" : 45676,
+    "nivel" : "basico"
 }
 
-##
-GET http://localhost:3000/api/cursos/programacion/python?ordenar=vistas HTTP/1.1
+###
 
-##
+PUT http://localhost:3000/api/cursos/programacion/2 HTTP/1.1
+Content-Type: application/json
 
-PUT http://localhost:3000/ HTTP/1.1
+{
+    "id": 2,
+    "titulo": "Python intermedio con proyectos",
+    "lenguaje": "python",
+    "vistas": 123006,
+    "nivel": "intermedio"
+}
