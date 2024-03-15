@@ -4,7 +4,7 @@ const { getItems, getItem, createItem } = require("../controllers/comercioContro
 
 routes.get("/", getItems)
 routes.get("/:id", getItem)
-routes.post("/", createItem)
+routes.post('/', createItem);
 
 module.exports = routes
 

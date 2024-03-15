@@ -1,3 +1,14 @@
+GET http://localhost:3000/api/comercio
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDA2MjlmM2JjYjVjZjgyNTk4YTQ3NmQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NzgxMjU3NTAsImV4cCI6MTY3ODEzMjk1MH0.vQIpLoM67ss6kIdr8OBHiQJoko7LXOfHVcPtDMhw-TE
+
+
+###
+
+GET http://localhost:3000/api/comercio/63fba226c391fd40d29c4dd7
+
+###
+
+
 POST http://localhost:3000/api/comercios
 Content-Type: application/json
 

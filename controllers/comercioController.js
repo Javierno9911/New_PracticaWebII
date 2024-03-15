@@ -1,7 +1,7 @@
-/*const { matchedData } = require('express-validator');*/
+const { matchedData } = require('express-validator');
 const Comercio = require('../models/nosql/comercio');
 
-/*const { handleHttpError } = require('../utils/handleError');*/
+const { handleHttpError } = require('../utils/handleError');
 
 /**
  * Obtener lista de la base de datos
@@ -43,76 +43,48 @@ const getItem = async (req, res) => {
     }
 }
 
-const updateItem = (req, res) => {}
-const deleteItem = (req, res) => {}
+/**
+ * Actualizar un item en la base de datos
+ * @param {*} req
+ * @param {*} res
+ */
+const updateItem = async (req, res) => {
+    try {
+        const { id } = matchedData(req); // Obtener el ID del cuerpo de la solicitud
+        const { body } = req; // Obtener los datos actualizados del cuerpo de la solicitud
+        const updatedItem = await Comercio.findByIdAndUpdate(id, body, { new: true }); // Buscar y actualizar el item en la base de datos
+        if (!updatedItem) {
+            // Si el item no se encuentra
+            return handleHttpError(res, "ERROR_ITEM_NOT_FOUND", 404);
+        }
+        res.send(updatedItem); // Enviar el item actualizado como respuesta
+    } catch (err) {
+        // Manejar errores
+        console.error(err);
+        handleHttpError(res, "ERROR_UPDATE_ITEM");
+    }
+}
+
+/**
+ * Eliminar un item de la base de datos
+ * @param {*} req
+ * @param {*} res
+ */
+const deleteItem = async (req, res) => {
+    try {
+        const { id } = matchedData(req); // Obtener el ID del cuerpo de la solicitud
+        const deletedItem = await Comercio.findByIdAndDelete(id); // Buscar y eliminar el item de la base de datos
+        if (!deletedItem) {
+            // Si el item no se encuentra
+            return handleHttpError(res, "ERROR_ITEM_NOT_FOUND", 404);
+        }
+        res.send(deletedItem); // Enviar el item eliminado como respuesta
+    } catch (err) {
+        // Manejar errores
+        console.error(err);
+        handleHttpError(res, "ERROR_DELETE_ITEM");
+    }
+}
 
 module.exports = { getItems, getItem, createItem, updateItem,deleteItem };
 
-
-/*
-// Obtener la lista de comercios
-exports.obtenerComercios = async (req, res) => {
-    try {
-        const data = await Comercio.find({});
-        res.send(data);
-    } catch (err) {
-        handleHttpError(res, 'ERROR_GET_ITEMS', 403);
-    }
-};
-
-// Obtener un comercio por su CIF
-exports.obtenerComercioPorCIF = async (req, res) => {
-    try {
-        const comercio = await Comercio.findOne({ cif: req.params.cif });
-        if (!comercio) {
-            return handleHttpError(res, 'ERROR_COMERCIO_NO_ENCONTRADO', 404);
-        }
-        res.send(comercio);
-    } catch (err) {
-        handleHttpError(res, 'ERROR_GET_ITEM', 403);
-    }
-};
-
-// Guardar un comercio
-exports.guardarComercio = async (req, res) => {
-    try {
-        const body = matchedData(req);
-        const comercio = new Comercio(body);
-        const resultado = await comercio.save();
-        res.send(resultado);
-    } catch (err) {
-        handleHttpError(res, 'ERROR_CREATE_ITEMS', 400);
-    }
-};
-
-// Modificar un comercio a partir de su CIF
-exports.modificarComercioPorCIF = async (req, res) => {
-    try {
-        const comercio = await Comercio.findOneAndUpdate({ cif: req.params.cif }, req.body, { new: true });
-        if (!comercio) {
-            return handleHttpError(res, 'ERROR_COMERCIO_NO_ENCONTRADO', 404);
-        }
-        res.send(comercio);
-    } catch (err) {
-        handleHttpError(res, 'ERROR_UPDATE_ITEM', 400);
-    }
-};
-
-// Borrar un comercio a partir de su CIF
-exports.borrarComercioPorCIF = async (req, res) => {
-    try {
-        const { borradoLogico = true } = req.query;
-        let resultado;
-        if (borradoLogico) {
-            resultado = await Comercio.findOneAndUpdate({ cif: req.params.cif }, { $set: { eliminado: true } }, { new: true });
-        } else {
-            resultado = await Comercio.findOneAndDelete({ cif: req.params.cif });
-        }
-        if (!resultado) {
-            return handleHttpError(res, 'ERROR_COMERCIO_NO_ENCONTRADO', 404);
-        }
-        res.send(resultado);
-    } catch (err) {
-        handleHttpError(res, 'ERROR_DELETE_ITEM', 400);
-    }
-};*/
