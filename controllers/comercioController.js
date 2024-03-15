@@ -1,7 +1,55 @@
-const { matchedData } = require('express-validator');
-const Comercio = require('../models/comercio');
-const { handleHttpError } = require('../utils/handleError');
+/*const { matchedData } = require('express-validator');*/
+const Comercio = require('../models/nosql/comercio');
 
+/*const { handleHttpError } = require('../utils/handleError');*/
+
+/**
+ * Obtener lista de la base de datos
+ * @param {*} req
+ * @param {*} res
+*/
+
+const getItems = async (req, res) => {
+    const data = await Comercio.find({})
+    res.send(data)
+}
+
+/**
+ * Obtener lista de la base de datos
+ * @param {*} req
+ * @param {*} res
+*/
+
+const createItem = async (req, res) => {
+    const { body } = req
+    //console.log(body)
+    const data = awaitComercio.create(body)
+    res.send(data)
+}
+
+/**
+ * Obtener un detalle
+ * @param {} req 
+ * @param {*} res 
+ */
+const getItem = async (req, res) => {
+    try{
+        const {id} = matchedData(req) //Me quedo solo con el id
+        const data = await Comercio.findById(id)
+        res.send(data)
+    } catch(err){
+        //console.log(err)
+        handleHttpError(res, "ERROR_GET_ITEM")
+    }
+}
+
+const updateItem = (req, res) => {}
+const deleteItem = (req, res) => {}
+
+module.exports = { getItems, getItem, createItem, updateItem,deleteItem };
+
+
+/*
 // Obtener la lista de comercios
 exports.obtenerComercios = async (req, res) => {
     try {
@@ -67,4 +115,4 @@ exports.borrarComercioPorCIF = async (req, res) => {
     } catch (err) {
         handleHttpError(res, 'ERROR_DELETE_ITEM', 400);
     }
-};
+};*/

@@ -1,15 +1,21 @@
-const express = require ('express' );
-const app = express ();
-require ('dotenv' ).config ();
+const express = require("express")
+const cors = require("cors")
+require('dotenv').config();
+const dbConnect = require('./config/mongo')
 
-app.get('/', (req, res) => {
-    res.send('Bienvenido a express')
-});
+const app = express()
 
-const comercioRouter = require('./routers/comercio');
-app.use('/api/comercios', comercioRouter);
+//Le decimos a la app de express() que use cors para evitar el error Cross-Domain (XD)
+app.use(cors())
+app.use(express.json())
 
-const port = process .env.PORT || 3000;
-app.listen (port, () => {
-    console .log('Servidor iniciado en el puerto' , port);
-});
+app.use("/api", require("./routers"))
+
+const port = process.env.PORT || 3000
+
+app.listen(port, () => {
+    console.log("Servidor escuchando en el puerto " + port)
+})
+
+dbConnect()
+//212.0.109.168

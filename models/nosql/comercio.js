@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const mongooseDelete = require("mongoose-delete")
 
 const comercioSchema = new mongoose.Schema({
   nombre: { type: String, required: true },
@@ -10,6 +9,4 @@ const comercioSchema = new mongoose.Schema({
   idPagina: { type: Number, required: true }
 });
 
-const Comercio = mongoose.model('Comercio', comercioSchema);
-
-module.exports = Comercio;
+module.exports = mongoose.model("comercio", comercioSchema)
