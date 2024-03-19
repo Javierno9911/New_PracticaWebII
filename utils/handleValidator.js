@@ -4,8 +4,8 @@ const validateResults = (req, res, next) => {
         validationResult(req).throw()
         return next()
     } catch (err) {
-        res.status(403)
-        res.send({ errors: err.array() })
+        res.status(403) // Por ahora lo dejamos como no permitido
+        res.send(err)
     }
 }
 module.exports = validateResults

@@ -1,10 +1,19 @@
 const express = require("express")
-const routes = express.Router()
-const { getItems, getItem, createItem } = require("../controllers/comercioController")
+const router = express.Router()
+const customHeader = require("../middleware/customHeader")
+const { getItems, getItem, createItem, updateItem, deleteItem } = require("../controllers/comercioController")
+const { validatorCreateItem, validatorGetItem } = require("../validators/comercio")
 
-routes.get("/", getItems)
-routes.get("/:id", getItem)
-routes.post('/', createItem);
 
-module.exports = routes
+router.get("/", getItems)
 
+router.get("/:id", validatorGetItem, getItem)
+
+router.put("/:id",validatorGetItem, validatorCreateItem, updateItem)
+
+router.delete("/:id", validatorGetItem, deleteItem)
+
+router.post("/", validatorCreateItem, customHeader, createItem)
+
+
+module.exports = router
