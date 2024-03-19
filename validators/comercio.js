@@ -31,3 +31,12 @@ const validatorGetItem = [
 ]
 
 module.exports = { validatorCreateItem, validatorGetItem }
+
+/*
+Se importar una función llamada validateResults desde un archivo handleValidator.js ubicado en la carpeta utils. Esta función se utiliza para manejar 
+los resultados de la validación realizada en la solicitud.
+
+Para cada conjunto de validaciones (validatorCreateItem y validatorGetItem), se definen una serie de reglas de validación utilizando check. Estas reglas 
+especifican qué campos de la solicitud deben existir, y que requisitos tienen que tener. Con validaResult se maneja los resultados de la validacion.
+
+*/
