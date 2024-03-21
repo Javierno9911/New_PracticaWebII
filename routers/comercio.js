@@ -5,7 +5,14 @@ const { getItems, getItem, createItem, updateItem, deleteItem } = require("../co
 const { validatorCreateItem, validatorGetItem } = require("../validators/comercio")
 
 
-router.get("/", getItems)
+//router.get("/", getItems)
+
+router.get("/", (req, res, next) => {
+    if (req.query.orderBy === "cif") {
+    } else {
+        getItems(req, res, next)
+    }
+})
 
 router.get("/:id", validatorGetItem, getItem)
 
@@ -14,7 +21,6 @@ router.put("/:id",validatorGetItem, validatorCreateItem, updateItem)
 router.delete("/:id", validatorGetItem, deleteItem)
 
 router.post("/", validatorCreateItem, customHeader, createItem)
-
 
 module.exports = router
 
