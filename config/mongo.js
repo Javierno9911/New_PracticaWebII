@@ -13,9 +13,9 @@ const dbConnect = () => {
 module.exports = dbConnect
 
 /*En config importamos las bibliotecas de mongose, Mongoose es una biblioteca de modelado de objetos de MongoDb que sera la base de datos que 
-en este proyecto.
+usaremos en este proyecto.
 
 Y definimos la llamada a la base de datos con dbConnect. Si se conecta correctamente saldra el mensaje de Conectado y si no saltara al catch
-donde nos slatara error en la consola.
+donde nos saltara error en la consola.
 
 */
